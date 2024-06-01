@@ -41,7 +41,7 @@ class ReceivedNoteController extends BaseController
                 'warehouses.WarehouseID',
                 'received_notes.CreatedAt',
                 'received_notes.UpdatedAt',
-                DB::raw('SUM(batches.Price) as Total'),
+                DB::raw('SUM(batches.Price * batches.Quantity) as Total'),
                 DB::raw('SUM(batches.Quantity) as ProductCount')
             )
                 ->join('employees', 'employees.EmployeeID', '=', 'received_notes.EmployeeID')

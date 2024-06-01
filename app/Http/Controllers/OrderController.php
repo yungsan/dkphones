@@ -61,9 +61,11 @@ class OrderController extends BaseController
                 'statuses.StatusName',
                 DB::raw('COUNT(order_details.ProductID) as ProductCount'),
                 'customers.CustomerName',
+                'customers.Address',
+                'customers.PhoneNumber',
                 'products.ProductName',
                 'order_details.Quantity as Quantity',
-                DB::raw('SUM(batches.Quantity) as Remain')
+                DB::raw('SUM(batches.Remain) as Remain')
             );
         if ($did === 1) {
             $orders = $orders->where('statuses.StatusName', '=', 'Giao hàng thành công');
@@ -168,14 +170,10 @@ class OrderController extends BaseController
         $dateOneDaysAgo = Carbon::now()->subDays(1)->toDateString();
 
         $allTime = DB::select("
-            SELECT SUM(o.Total) as Total,
-                SUM(b.Price * b.Quantity) as Cost,
-                SUM(o.Total) - SUM(b.Price * b.Quantity) as Profit
-            FROM orders o
-                join order_details d on d.OrderID = o.OrderID
-                join statuses s on s.StatusID = o.StatusID 
-                join received_notes r join batches b on b.BatcheID = r.BatcheID
-            WHERE s.StatusName = 'Giao hàng thành công'
+            select SUM(o.Total) as Total
+            from orders o join order_details d on d.OrderID = o.OrderID 
+            join statuses s on s.StatusID = o.StatusID
+            where s.StatusName = 'Giao hàng thành công'
         ")[0];
 
 
@@ -196,8 +194,12 @@ class OrderController extends BaseController
     {
         $order = Order::find($request->input('OrderID'));
         $status = Status::where('StatusName', 'Đã huỷ đơn')->first();
-        $order->StatusID = $status['StatusID'];
-        $order->save();
+        $order = Order::where('OrderID', $request->input('OrderID'))->update([
+            'StatusID' => $status['StatusID']
+        ]);
+        // return $order;
+        // $order->StatusID = $status['StatusID'];
+        // $order->save();
         return $order;
     }
 }

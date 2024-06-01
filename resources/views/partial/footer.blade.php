@@ -1,5 +1,5 @@
-<footer class="w-full px-40 py-12 bg-white flex flex-wrap justify-between mt-8">
-  <div class="w-1/4 px-4">
+<footer class="w-full lg:px-40 px-8 py-12 bg-white flex flex-wrap justify-between mt-8 gap-y-8">
+  <div class="lg:w-1/4 w-full lg:px-4">
     <a href="/" class="font-extrabold text-2xl">
       <span class="text-primary-500">DK</span>
       <span class="font-light">Phones</span>
@@ -8,7 +8,7 @@
       incididunt ut labore.
     </p>
   </div>
-  <div class="w-1/4 px-4">
+  <div class="lg:w-1/4 w-full lg:px-4">
     <h1 class="font-extrabold text-xl">
       Về chúng tôi
     </h1>
@@ -16,7 +16,7 @@
     <p class="mt-4 opacity-65">Tuyển dụng</p>
     <p class="mt-4 opacity-65">Góp ý - Khiếu nại</p>
   </div>
-  <div class="w-1/4 px-4">
+  <div class="lg:w-1/4 w-full lg:px-4">
     <h1 class="font-extrabold text-xl">
       Hỗ trợ
     </h1>
@@ -25,7 +25,7 @@
     <p class="mt-4 opacity-65">Chính sách bảo hành</p>
     <p class="mt-4 opacity-65">Điều khoản & Dịch vụ</p>
   </div>
-  <div class="w-1/4 px-4">
+  <div class="lg:w-1/4 w-full lg:px-4">
     <h1 class="font-extrabold text-xl">
       Liên hệ
     </h1>

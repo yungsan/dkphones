@@ -42,9 +42,10 @@ class HomeController extends Controller
             'Bluetooth',
             'HeadphoneJack',
             'Storage',
-            'Remain'
+            DB::raw('SUM(Remain) as Remain')
         )->join('Batches', 'Batches.SKU', '=', 'Products.SKU')
             ->where('ProductID', $id)
+            ->groupBy('products.ProductID')
             ->first();
 
         return view('pages/detail', ['product' => $product]);

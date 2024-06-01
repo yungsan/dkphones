@@ -2,14 +2,10 @@
 
 @section('title', 'App - Top Page')
 
-@section('breadcrumb')
-@include('partial.breadcrumb')
-@stop
-
 @section('content')
-<div class="main-content px-24">
+<div class="main-content lg:px-24 px-4">
   <div class="flex justify-between mt-24">
-    <form action="/login" method="post" class="w-1/2 m-auto">
+    <form action="/login" method="post" class="lg:w-1/2 w-full m-auto">
       @csrf <!-- {{ csrf_field() }} -->
 
       <h1 class="font-extrabold text-primary-500 uppercase w-full text-center text-3xl">Đăng nhập</h1>

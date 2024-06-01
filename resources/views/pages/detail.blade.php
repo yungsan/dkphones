@@ -2,17 +2,14 @@
 
 @section('title', 'App - Top Page')
 
-@section('breadcrumb')
-@include('partial.breadcrumb')
-@stop
 
 @section('content')
-<div class="main-content px-24">
-  <div class="flex justify-between mt-24">
-    <div class="w-1/2 min-h-96 bg-white-500 mr-8">
+<div class="main-content lg:px-24 px-4">
+  <div class="flex flex-wrap justify-between mt-24">
+    <div class="lg:w-1/3 w-full min-h-96 bg-white-500">
       <img src="{{$product['ImageURL']}}" alt="img" class="w-full h-full object-cover">
     </div>
-    <div class="w-2/3">
+    <div class="lg:w-2/3 w-full lg:mt-0 mt-4 pl-12">
       <p class="font-semibold text-primary-600">{{$product['SKU']}}</p>
       <h1 class="font-bold text-2xl uppercase my-4">{{$product['ProductName']}}</h1>
       <div class="flex items-end my-4">
@@ -135,7 +132,7 @@
       </div>
     </div>
   </div>
-  <form action="/buyNow" method="post" id="buyNowForm">
+  <form action="/buyNow" method="post" id="buyNowForm" class="hidden">
     @csrf
     <input type="text" name="ProductID" value="{{$product['ProductID']}}">
     <input type="text" name="Quantity" value="1" id="q_inp">

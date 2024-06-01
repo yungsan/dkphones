@@ -45,6 +45,7 @@ Route::middleware(['jwt.cookie'])->group(function () {
 
   Route::get('/cart', [CartController::class, 'addCart'])->name('cart.page');
   Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+  Route::put('/cart', [CartController::class, 'updateCart'])->name('updateCart');
   Route::delete('/addToCart', [CartController::class, 'deleteCart'])->name('deleteCart');
   Route::post('/buyNow', [CartController::class, 'buyNow'])->name('buyNow');
 
